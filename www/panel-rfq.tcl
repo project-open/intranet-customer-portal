@@ -48,12 +48,18 @@ set column_sql "
                 acs_attributes aa
         where   a.widget_name = w.widget_name and
                 a.acs_attribute_id = aa.attribute_id and
-                aa.object_type = 'im_project'
+                aa.object_type = 'im_project' and 
+		a.also_hard_coded_p = 'f'
 "
+
+
 db_foreach column_list_sql $column_sql {
     lappend extra_selects "${deref_plpgsql_function}($attribute_name) as ${attribute_name}_deref"
 }
+
 set extra_select [join $extra_selects ",\n\t"]
+
+###
 
 set query "
 select
@@ -80,11 +86,14 @@ order by
         p.project_id
 "
 
+# set query "select count(*) from im_projects where project_id = :project_id"
 
 if { ![db_0or1row projects_info_query $query] } {
     ad_return_complaint 1 "[_ intranet-core.lt_Cant_find_the_project]"
     return
 }
+
+
 
 set project_type [im_category_from_id $project_type_id]
 set project_status [im_category_from_id $project_status_id]
@@ -124,6 +133,8 @@ append project_base_data_html "
                             <td>$project_status</td>
                           </tr>\n"
 
+
+
 if { ![empty_string_p $company_project_nr] } {
     append project_base_data_html "
                           <tr>
@@ -161,10 +172,12 @@ set column_sql "
         where
                 a.widget_name = w.widget_name and
                 a.acs_attribute_id = aa.attribute_id and
-                aa.object_type = 'im_project'
+                aa.object_type = 'im_project' and
+                a.also_hard_coded_p = 'f'
         order by
                 coalesce(la.pos_y,0), coalesce(la.pos_x,0)
 "
+
 db_foreach column_list_sql $column_sql {
     set var ${attribute_name}_deref
     set value [expr $$var]
@@ -178,15 +191,18 @@ db_foreach column_list_sql $column_sql {
     }
 }
 
+
+
+
 set inquiry_id [db_string get_inquiry_id "select inquiry_id from im_inquiries_customer_portal where project_id=$project_id" -default 0]
 
 if {[im_openacs54_p]} {
     # Load ExtJS "Uploaded Files Portlet"
-    template::head::add_javascript -src "/intranet-customer-portal/resources/js/portlet-uploaded-files.js?inquiry_id=$inquiry_id" -order "2"
+    template::head::add_javascript -src "/intranet-customer-portal/js/portlet-uploaded-files.js?inquiry_id=$inquiry_id" -order "2"
     set js_include ""
 } else {
     set params [list inquiry_id $inquiry_id]
-    set js_include [ad_parse_template -params $params "/packages/intranet-customer-portal/www/resources/js/portlet-uploaded-files.js"]
+    set js_include [ad_parse_template -params $params "/packages/intranet-customer-portal/www/js/portlet-uploaded-files.js"]
 }
 
 db_1row get_inquiry_info "select * from im_inquiries_customer_portal where inquiry_id=$inquiry_id" 
