@@ -78,13 +78,13 @@ FinancialDocumentsPortlet.app = function() {
 		width: 685,	
 		height: 200,
 		columns: [
-        	    {header: "No", width: 80, dataIndex: 'id', sortable: true},
-        	    {header: "Title", width: 120, dataIndex: 'title', sortable: true},
-        	    {header: "Date created", width: 80, dataIndex: 'doc_date', sortable: true, renderer: Ext.util.Format.dateRenderer('d-M-Y')},
-        	    {header: "Status", width: 100, dataIndex: 'status_id', sortable: true},
-        	    {header: "Amount", width: 100, dataIndex: 'amount', sortable: true, align: 'right'},
-        	    {header: "Currency", width: 60, dataIndex: 'currency', sortable: true, align: 'left'},
-        	    {header: "Project No.", width: 130, sortable: true, dataIndex: 'project_nr'}
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Number "No"]%>", width: 80, dataIndex: 'id', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Title "Title"]%>", width: 120, dataIndex: 'title', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Date_Created "Date created"]%>", width: 80, dataIndex: 'doc_date', sortable: true, renderer: Ext.util.Format.dateRenderer('d-M-Y')},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Status "Status"]%>", width: 100, dataIndex: 'status_id', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Amount "Amount"]%>", width: 100, dataIndex: 'amount', sortable: true, align: 'right'},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Currency "Currency"]%>", width: 60, dataIndex: 'currency', sortable: true, align: 'left'},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Project_No "Project No."]%>", width: 130, sortable: true, dataIndex: 'project_nr'}
         	],
 		dockedItems: [{
 		        xtype: 'pagingtoolbar',
@@ -107,11 +107,3 @@ FinancialDocumentsPortlet.app = function() {
 }(); // end of app;
 
 Ext.onReady(FinancialDocumentsPortlet.app.init, FinancialDocumentsPortlet.app);
-
-
-
-
-
-
-
-

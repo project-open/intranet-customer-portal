@@ -52,20 +52,12 @@ Ext.onReady(function(){
 		width: 600,
 		height: 300,
 		columns: [
-        	    {header: "ID", width: 40, dataIndex: 'inquiry_files_id', sortable: true},
-        	    {header: "File", width: 100, dataIndex: 'file_name', sortable: true, renderer: renderLink },
-        	    {header: "Source Language", width: 100, dataIndex: 'source_language', sortable: true},
-        	    {header: "Target Languages", width: 200, dataIndex: 'target_languages', sortable: true},
-        	    {header: "Expected Delivery Date", width: 150, dataIndex: 'deliver_date', sortable: true}
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Id "Id"]%>", width: 40, dataIndex: 'inquiry_files_id', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.File "File"]%>", width: 100, dataIndex: 'file_name', sortable: true, renderer: renderLink },
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Source_language "Source Language"]%>", width: 100, dataIndex: 'source_language', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Target_language "Target Language"]%>", width: 200, dataIndex: 'target_languages', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Expected_Delivery_Date "Expected Delivery Date"]%>", width: 150, dataIndex: 'deliver_date', sortable: true}
         	]
 	});
 	console.log('total:' + uploadedFilesStore.totalProperty);
 });
-
-
-
-
-
-
-
-

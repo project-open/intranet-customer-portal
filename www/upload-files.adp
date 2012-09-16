@@ -4,7 +4,6 @@
 <property name="main_navbar_label">intranet_customer_portal</property>
 
   <!--[if IE]>
-	
 	<style type="text/css">
 	/* #source_language_placeholder { margin-top: -12px } */ 
     	</style>
@@ -61,9 +60,9 @@
 
 <table cellpadding="0" cellspacing="0" border="0">
 <tr>
-	<td valign="top"><span id='titleUploadedFiles'><b>Files already uploaded for this RFQ:</b></span></td>
+	<td valign="top"><span id='titleUploadedFiles'><b><%=[lang::message::lookup "" intranet-customer-portal.Files_Already_uploaded "Files already uploaded for this RFQ:"]%></b></span></td>
         <td>&nbsp;&nbsp;&nbsp;</td>
-	<td valign="top"><b>Comments:</b><td>
+	<td valign="top"><b><%=[lang::message::lookup "" intranet-customer-portal.Comments "Comments"]%></b><td>
 </tr>
 <tr>
         <td colspan="3">&nbsp;&nbsp;&nbsp;</td>
@@ -77,8 +76,8 @@
 	<td></td>
         <td valign="top" align="center">
 		<textarea name="comment" cols="50" rows="14"></textarea><br><br>	
-		<input name="btnSubmit" type="button" id="btnSubmit" value="Send quote request" onclick="document.forms['form_request_quote'].btn_value.value='submit'; document.forms['form_request_quote'].submit();">&nbsp;
-		<input name="btnCancel" type="button" id="btnCancel" value="Cancel" onclick="document.forms['form_request_quote'].btn_value.value='cancel'; document.forms['form_request_quote'].submit();"
+		<input name="btnSubmit" type="button" id="btnSubmit" value="<%=[lang::message::lookup "" intranet-customer-portal.Send_Quote_Request "Send Request for Quote"]%>" onclick="document.forms['form_request_quote'].btn_value.value='submit'; document.forms['form_request_quote'].submit();">&nbsp;
+		<input name="btnCancel" type="button" id="btnCancel" value="<%=[lang::message::lookup "" intranet-customer-portal.Cancel "Cancel"]%>" onclick="document.forms['form_request_quote'].btn_value.value='cancel'; document.forms['form_request_quote'].submit();"
         </td>
 </tr>
 

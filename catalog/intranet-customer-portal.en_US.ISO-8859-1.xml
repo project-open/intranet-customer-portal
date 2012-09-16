@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+
 <message_catalog package_key="intranet-customer-portal" package_version="3.4.0.7.0" locale="en_US" charset="ISO-8859-1">
+  <msg key="Add_File_To_this_Quote">Add file to this quote</msg>
+  <msg key="Amount">Amount</msg>
+  <msg key="Comments">Comments</msg>
+  <msg key="Cancel">Cancel</msg>
+  <msg key="Date_Created">Date Created</msg>
+  <msg key="Deliver_Date">Delivery Date</msg>  
+  <msg key="Email">Email</msg>  
+  <msg key="Err_File_Upload"><br/>The file you are trying to upload is either too large or you have already uploaded another file with an identical name</msg>
+  <msg key="Expected_Delivery_Date">Expected Delivery Date</msg>
+  <msg key="File">File</msg>
+  <msg key="File_To_Translate">File to translate</msg>
+  <msg key="Files_Already_uploaded">Files already uploaded for this RFQ:</msg>
+  <msg key="Id">Id</msg>
+  <msg key="Inquiry_Deleted">Your inquiry and all uploaded files have been deleted</msg>
+  <msg key="Status">Status</msg>
+  <msg key="Source_Language">Source Language</msg>
+  <msg key="Source_Languages">Source Languages</msg>
+  <msg key="Target_Languages">Target Languages</msg>
+  <msg key="Name">Name</msg>  
+  <msg key="Number">No</msg>
   <msg key="Notification_Subject_Notify_Customer_Quote_Created">Quote created</msg>
   <msg key="Notification_Body_Notify_Customer_Quote_Created">A quote has been created for you. Please visit the customer portal.</msg>
   <msg key="Notification_Subject_Notify_Project_Customer_Decision">Notice: Client accepted/rejected quote</msg>
-  <msg key="'Notification_Body_Notify_Project_Customer_Decision">There had been a client response on one the quotes created for a RFQ.</msg>
+  <msg key="Notification_Body_Notify_Project_Customer_Decision">There had been a client response on one the quotes created for a RFQ.</msg>
+  <msg key="Phone">Phone</msg>  
+  <msg key="Please_Provide_Value">Please provide a value</msg>
+  <msg key="Please_Select_Document">Please select document</msg>
+  <msg key="Please_Provide_Source_Language">Please provide a value for Source Language</msg>
+  <msg key="Please_SelectDoc">Please select a document ...</msg>
+  <msg key="Project_No">Project No.</msg>
+  <msg key="Send_Quote_Request">Send Quote Request</msg>
+  <msg key="Thanks_For_Submitting">Thanks for submitting</msg>
+  <msg key="Thanks_For_Inquiry">Thanks your inquiry. We will get back to you as soon as possible.</msg>
+  <msg key="Uploading_File">Uploading file ...</msg>
 </message_catalog>
