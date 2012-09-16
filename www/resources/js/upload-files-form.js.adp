@@ -133,7 +133,6 @@ Ext.onReady(function(){
         var targetLanguageStore = Ext.create('PO.data.CategoryStore', {
                 storeId:        'targetLanguageStore',
                 remoteFilter:   true,
-                autoLoad:       true,
                 model: 'CustomerPortal.Category',
                 proxy: {
                         type: 'rest',
