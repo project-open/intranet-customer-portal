@@ -40,7 +40,7 @@ Ext.onReady(function(){
         		    return false;  
         		}        
 		}, 
-		sourceNotEmptyText: 'Please provide a value for "Source Language"'
+		sourceNotEmptyText: '<%=[lang::message::lookup "" intranet-customer-portal.Please_Provide_Source_Language "Please provide a value for Source Language"]%>'
 	});  
 
 	// ************** Panel: UploadedFiles Data Grid*** //
@@ -88,11 +88,11 @@ Ext.onReady(function(){
 		width: 515,
 		height: 250,
 		columns: [
-        	    {header: "ID", width: 25, dataIndex: 'inquiry_files_id', sortable: true},
-        	    {header: "File", width: 100, dataIndex: 'file_name', sortable: true},
-        	    {header: "Source Languages", width: 100, dataIndex: 'source_language', sortable: true},
-        	    {header: "Target Languages", width: 200, dataIndex: 'target_languages', sortable: true},
-        	    {header: "Delivery Date", width: 100, dataIndex: 'deliver_date', sortable: true}
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Id "Id"]%>", width: 25, dataIndex: 'inquiry_files_id', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.File "File"]%>", width: 100, dataIndex: 'file_name', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Source_Languages "Source Languages"]%>", width: 100, dataIndex: 'source_language', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Target_Languages "Target Languages"]%>", width: 200, dataIndex: 'target_languages', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Deliver_Date "Delivery Date"]%>", width: 100, dataIndex: 'deliver_date', sortable: true}
         	]
 	});
 
@@ -150,7 +150,7 @@ Ext.onReady(function(){
 
     var selectTargetLanguage = Ext.create('Ext.ux.form.field.BoxSelect', {
 	id: 'target_language_id',
-        fieldLabel: '<a href="@abbreviation_url;noquote@"><img src="/intranet/images/help_12_12.gif"></a> Target Languages',
+        fieldLabel: '<a href="@abbreviation_url;noquote@"><img src="/intranet/images/help_12_12.gif"></a> <%=[lang::message::lookup "" intranet-customer-portal.Target_Languages "Target Languages"]%>',
 	labelAlign: 'top',
        	renderTo: 'form_target_languages',
         displayField: 'category_translated',
@@ -159,7 +159,7 @@ Ext.onReady(function(){
         store: targetLanguageStore,
 	valueField: 'category_id', 
         queryMode: 'remote',
-	blankText: 'Please provide a value',
+	blankText: '<%=[lang::message::lookup "" intranet-customer-portal.Please_Provide_Value "Please provide a value"]%>',
 	allowBlank: false,
 	forceSelection: true,
 	hiddenName: 'target_language_ids',
@@ -209,9 +209,9 @@ Ext.onReady(function(){
                     xtype: 'fileuploadfield',
 		    id: 'upload_file',
 		    name:  'upload_file',
-                    emptyText: 'Please select a document ...',
+                    emptyText: '<%=[lang::message::lookup "" intranet-customer-portal.Please_Select_Document "Please select document"]%>',
 		    labelAlign: 'top',
-		    fieldLabel: 'File to translate',
+		    fieldLabel: '<%=[lang::message::lookup "" intranet-customer-portal.File_To_Translate "File to translate"]%>',
                     buttonText: 'Browse',
 		    listeners: {
 			    'change': function(){
@@ -230,7 +230,7 @@ Ext.onReady(function(){
 	input_delivery_date = new Ext.form.Date({
 	    id: 'delivery_date',
 	    renderTo: 'delivery_date_placeholder',
-	    fieldLabel: 'Delivery Date',
+	    fieldLabel: '<%=[lang::message::lookup "" intranet-customer-portal.Delivery_Date "Delivery Date"]%>',
 	    labelAlign: 'top',
 	    labelWidth: 100,
 	    width: 100,  
@@ -264,26 +264,26 @@ Ext.onReady(function(){
 	                myuploadform.getForm().submit({
         	        	url: '/intranet-customer-portal/upload-files-form-action.tcl',
 				params: 'source_language=' + source_language + '&target_languages=' + target_languages + '&delivery_date=' + delivery_date + '&inquiry_id=@inquiry_id;noquote@&security_token=@security_token;noquote@',
-                	        waitMsg: 'Uploading file...',
+                	        waitMsg: '<%=[lang::message::lookup "" intranet-customer-portal.Uploading_File "Uploading file ..."]%>',
 				success: function(response){
 		                        document.getElementById('tableUploadedFiles').style.visibility='visible';
                 		        document.getElementById('titleUploadedFiles').style.visibility='visible';
 		                        document.getElementById('sendButtons').style.visibility='visible';
-					document.getElementById('btnSendFileandMetaData').innerHTML = 'Add file to this quote'; 
+					document.getElementById('btnSendFileandMetaData').innerHTML = '<%=[lang::message::lookup "" intranet-customer-portal.Add_File_To_this_Quote "Add file to this quote"]%>'; 
 					myuploadform.remove('upload_file', true);
 					myuploadform.add(new Ext.ux.form.FileUploadField({
 			                    xtype: 'fileuploadfield',
 			                    id: 'upload_file',
 			                    name:  'upload_file',
-			                    emptyText: 'Please select a document ...',
+			                    emptyText: '<%=[lang::message::lookup "" intranet-customer-portal.Please_Select_Doc "Please select a document ..."]%>',
 			                    labelAlign: 'top',
-			                    fieldLabel: 'File to translate',
+			                    fieldLabel: '<%=[lang::message::lookup "" intranet-customer-portal.File_To_Translate "File to translate"]%>',
 			                    buttonText: 'Browse'
             				}));
 					uploadedFilesStore.load();
 				}, 
 				failure: function(response){
-					Ext.Msg.show({title:'Could not upload file', msg:'<br/>The file you are trying to upload is either too large or you have already uploaded another file with an identical name.'});
+				Ext.Msg.show({title:'Could not upload file', msg:'<%=[lang::message::lookup "" intranet-customer-portal.Err_File_Upload "<br/>The file you are trying to upload is either too large or you have already uploaded another file with an identical name"]%>'});
 				} 
                  	});
 
@@ -301,12 +301,12 @@ Ext.onReady(function(){
         // Ext.EventManager.on('cancel', 'click', clickHandlerCancel);
 
 	if ( 1 == @reset_p;noquote@ && 0 == @cancel_p;noquote@ ) {
-		Ext.Msg.show({msg:'Thanks for submitting.'});
+		Ext.Msg.show({msg:'<%=[lang::message::lookup "" intranet-customer-portal.Thanks_For_Submitting "Thanks for submitting"]%>'});
 	}	
         // console.log("cancel:@cancel_p;noquote@");
 	if ( 1 == @cancel_p;noquote@ ) {
                 Ext.Msg.show({
-			msg:'Your inquiry and all uploaded files have been deleted',
+			msg:'<%=[lang::message::lookup "" intranet-customer-portal.Inquiry_Deleted "Your inquiry and all uploaded files have been deleted"]%>',
 			buttons: Ext.MessageBox.OK,
 			closable:true
 		});
@@ -328,7 +328,7 @@ Ext.onReady(function(){
                 transform: 'source_language_id',
                 allowBlank: false,
                 blankText: 'Please provide a value',
-                fieldLabel: '<a href="@abbreviation_url;noquote@"><img src="/intranet/images/help_12_12.gif"></a> Source Language',
+                fieldLabel: '<a href="@abbreviation_url;noquote@"><img src="/intranet/images/help_12_12.gif"></a><%=[lang::message::lookup "" intranet-customer-portal.Source_Language "Source Language"]%>',
                 labelAlign: 'top',
                 labelWidth: 150,
                 vtype:'sourceNotEmpty'

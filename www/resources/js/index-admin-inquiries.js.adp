@@ -114,11 +114,11 @@ Ext.onReady(function(){
 		width: 700,
 		height: 300,
 		columns: [
-        	    {header: "ID", width: 25, dataIndex: 'inquiry_id', sortable: true},
-        	    {header: "Name", width: 150, dataIndex: 'name', sortable: true},
-        	    {header: "Email", width: 100, dataIndex: 'email', sortable: true},
-        	    {header: "Company", width: 100, dataIndex: 'company_name', sortable: true},
-        	    {header: "Phone", width: 100, dataIndex: 'phone', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-core.Id "Id"]%>", width: 25, dataIndex: 'inquiry_id', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-core.Name "Name"]%>", width: 150, dataIndex: 'name', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-core.Email "Email"]%>", width: 100, dataIndex: 'email', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-core.Company "Company"]%>", width: 100, dataIndex: 'company_name', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-core.Phone "Phone"]%>", width: 100, dataIndex: 'phone', sortable: true},
         	    {	header: 'Project Type', 
 			dataIndex: 'prospect_project_type', 
 			width: 200, 
@@ -189,11 +189,11 @@ Ext.onReady(function(){
                 width: 600,
                 height: 300,
                 columns: [
-                    {header: "ID", width: 25, dataIndex: 'inquiry_files_id', sortable: true},
-                    {header: "File", width: 150, dataIndex: 'file_name', sortable: true},
-                    {header: "Source Language", width: 100, dataIndex: 'source_language', sortable: true},
-                    {header: "Target Languages", width: 100, dataIndex: 'target_language', sortable: true},
-                    {header: "Delivery Date", width: 100, dataIndex: 'deliver_date', sortable: true}
+                    {header: "<%=[lang::message::lookup "" intranet-core.Id "Id"]%>", width: 25, dataIndex: 'inquiry_files_id', sortable: true},
+                    {header: "<%=[lang::message::lookup "" intranet-core.File "File"]%>", width: 150, dataIndex: 'file_name', sortable: true},
+                    {header: "<%=[lang::message::lookup "" intranet-core.Source_language "Source Language"]%>", width: 100, dataIndex: 'source_language', sortable: true},
+                    {header: "<%=[lang::message::lookup "" intranet-core.Target_languages "Target Languages"]%>", width: 100, dataIndex: 'target_language', sortable: true},
+                    {header: "<%=[lang::message::lookup "" intranet-core.Delivery_Date "Delivery Date"]%>", width: 100, dataIndex: 'deliver_date', sortable: true}
                 ]
         });
 
