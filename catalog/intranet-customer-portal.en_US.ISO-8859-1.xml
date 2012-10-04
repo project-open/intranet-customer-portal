@@ -18,6 +18,7 @@
   <msg key="File_To_Translate">File to translate</msg>
   <msg key="Files_Already_uploaded">Files already uploaded for this RFQ:</msg>
   <msg key="Id">Id</msg>
+  <msg key="GetANewQuote">Get a new quote</msg>
   <msg key="Inquiry_Deleted">Your inquiry and all uploaded files have been deleted</msg>
   <msg key="Name">Name</msg>  
   <msg key="Number">No</msg>
