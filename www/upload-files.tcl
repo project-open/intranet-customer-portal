@@ -26,8 +26,7 @@ ad_page_contract {
 # ---------------------------------------------------------------
 # Security & Defaults
 # ---------------------------------------------------------------
-
-set page_title "Request for Quote"
+set page_title [lang::message::lookup "" intranet-customer-portal.PageTitleUploadFile "Request for Quote"]
 set show_navbar_p 0
 set show_left_navbar_p 0
 set anonymous_p 1
