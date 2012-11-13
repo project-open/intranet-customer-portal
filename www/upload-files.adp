@@ -38,7 +38,9 @@
 				<td valign="top"><div id='delivery_date_placeholder'></div> </td>
 				<td valign="top"><form id="form_source_language">@source_language_combo;noquote@<div id="source_language_placeholder"></div></form> </td>
 				<td valign="top"><div id="form_target_languages"</div> </td>
-				<td valign="top"><div class="buttons" style="margin-top: 20px"><button id="btnSendFileandMetaData">Upload file</button></div></td>
+				<td valign="top"><div class="buttons" style="margin-top: 20px">
+					<button id="btnSendFileandMetaData"><%=[lang::message::lookup "" intranet-customer-portal.UploadFile "Upload file"]%></button></div>
+				</td>
 			</tr>
 			</table>
 		</div>
