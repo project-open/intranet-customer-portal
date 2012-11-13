@@ -17,6 +17,7 @@
   <msg key="File">File</msg>
   <msg key="File_To_Translate">File to translate</msg>
   <msg key="Files_Already_uploaded">Files already uploaded for this RFQ:</msg>
+  <msg key="Financial_Documents">Financial Documents</msg>
   <msg key="Id">Id</msg>
   <msg key="GetANewQuote">Get a new quote</msg>
   <msg key="Inquiry_Deleted">Your inquiry and all uploaded files have been deleted</msg>
@@ -33,6 +34,7 @@
   <msg key="Please_SelectDoc">Please select a document ...</msg>
   <msg key="Project_No">Project No.</msg>
   <msg key="Quote">Ouote</msg>  
+  <msg key="Request_for_Quote">Request for Quote</msg>
   <msg key="Send_Quote_Request">Send Quote Request</msg>
   <msg key="Status">Status</msg>
   <msg key="Source_Language">Source Language</msg>
