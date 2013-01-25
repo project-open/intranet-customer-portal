@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ad_page_contract {
-    Builds ExtJS form for 'Inquire Quoute'
+    Builds ExtJS form for 'Inquire Quote'
 
     @param dynview
     @author klaus.hofeditz@project-open.com
@@ -44,6 +44,7 @@ ad_page_contract {
 if { ""==$reset_p } { set reset_p 0 }
 if { ""==$cancel_p } { set cancel_p 0 }
 set abbreviation_url [parameter::get -package_id [apm_package_id_from_key intranet-customer-portal] -parameter "AbbreviationURL" -default ""]
+
 
 # ---------------------------------------------------------------
 # Build form 
