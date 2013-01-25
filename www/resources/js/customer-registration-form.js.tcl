@@ -1,4 +1,4 @@
-# /packages/intranet-customer-portal/www/resources/js/wizard/wizard-form.js.tcl
+# /packages/intranet-customer-portal/www/customer-registration-form.js.tcl
 #
 # Copyright (C) 2011, ]project-open[
 #
