@@ -47,15 +47,18 @@ set tmp_filename [ns_queryget upload_file.tmpfile]
 im_security_alert_check_tmpnam -location "upload-files-form-action.tcl" -value $tmp_filename
 set filesize [file size $tmp_filename]
 
-if { $max_n_bytes && ($filesize > $max_n_bytes) } {
+ns_log NOTICE "upload-files-form-action.tcl:: max_n_bytes: $max_n_bytes, upload_file: $upload_file, tmp_filename: $tmp_filename, filesize: $filesize"
+
+if { "0" != $max_n_bytes && ($filesize > $max_n_bytes) } {
     # set util_commify_number_max_n_bytes [util_commify_number $max_n_bytes]
     # ad_return_complaint 1 "[_ intranet-translation.lt_Your_file_is_larger_t_1]"
     # ad_script_abort
+    ns_log NOTICE "upload-files-form-action.tcl::Max Bytes exceeded (Parameter: MaxNumberOfBytes)" 
     ns_return 406 text/html "\{\"success\":false\}"
 }
 
 if { [db_string get_view_id "select count (*) from im_inquiries_files where file_name='$upload_file' and inquiry_id = :inquiry_id" -default 0] } {
-    ns_log NOTICE "KHD: File already exists"
+    ns_log NOTICE "upload-files-form-action.tcl::File already exists: $tmp_filename"
     ns_return 406 text/html "\{\"success\":false\}"
     ad_script_abort
 }
