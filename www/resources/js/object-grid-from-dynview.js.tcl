@@ -1,4 +1,4 @@
-# /packages/intranet-customer-portal/www/resources/js/object-grid-from-dynview.js.tcl
+# /packages/intranet-customer-portal/www/object-grid-from-dynview.js.tcl
 #
 # Copyright (C) 2011, ]project-open[
 #
