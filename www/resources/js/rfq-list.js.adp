@@ -70,31 +70,29 @@ RFQPortlet.app = function() {
 		width: 730,	
 		height: 200,
 		columns: [
-        	    {header: "No", width: 40, dataIndex: 'id', sortable: true},
-        	    {header: "Inquiry ID", dataIndex: 'inquiry_id',hidden: true},
-        	    {header: "Title", width: 200, dataIndex: 'title', sortable: true},
-		    // {header: "Company", width: 150, dataIndex: 'company_name', sortable: true},
-        	    {header: "Date inquired", width: 80, dataIndex: 'inquiry_date', sortable: true, renderer: Ext.util.Format.dateRenderer('d-M-Y')},
-        	    // {header: "Status", width: 50, dataIndex: 'status_id', sortable: true},
-        	    {header: "Status", width: 100, dataIndex: 'status_id', sortable: true},
-        	    {header: "Quote", width: 100, dataIndex: 'cost_name', sortable: true},
-        	    {header: "Amount", width: 60, dataIndex: 'amount', sortable: true, align: 'right'},
-        	    {header: "Currency", width: 60, dataIndex: 'currency', sortable: true, align: 'left'},
-        	    {header: "Project Id", dataIndex: 'project_id',hidden: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Number "No."]%>", width: 40, dataIndex: 'id', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Id "Inquiry ID"]%>", dataIndex: 'inquiry_id',hidden: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Title "Title"]%>", width: 200, dataIndex: 'title', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Date_Created "Date inquired"]%>", width: 80, dataIndex: 'inquiry_date', sortable: true, renderer: Ext.util.Format.dateRenderer('d-M-Y')},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Status "Status"]%>", width: 100, dataIndex: 'status_id', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Quote "Quote"]%>", width: 100, dataIndex: 'cost_name', sortable: true},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Amount "Amount"]%>", width: 60, dataIndex: 'amount', sortable: true, align: 'right'},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Currency "Currency"]%>", width: 60, dataIndex: 'currency', sortable: true, align: 'left'},
+        	    {header: "<%=[lang::message::lookup "" intranet-customer-portal.Project_No "Project Id"]%>", dataIndex: 'project_id',hidden: true},
             	    {
 	                xtype: 'actioncolumn',
-			header: 'Accept/Reject',
+			header: '<%=[lang::message::lookup "" intranet-customer-portal.Accept_Reject "Accept/Reject"]%>',
         	        width: 90,
 			dataIndex: 'action_column',
                 	items: [{
 	                    icon   : '/resources/themes/images/default/dd/drop-yes.gif',  // Use a URL in the icon config
-        	            tooltip: 'Accept Quote',
+        	            tooltip: '<%=[lang::message::lookup "" intranet-customer-portal.TooltipAcceptQuote "Accept Quote"]%>',
                 	    handler: function(grid, rowIndex, colIndex) {
                         	var rec = gridPanel.getStore().getAt(rowIndex);
  				clickHandlerCustomerDecisionQuote(rec.get('inquiry_id'), rec.get('project_id'),'accept');
 		                Ext.Msg.show({
 					title: '', 
-					msg:'Thanks for your order.',
+					msg:'<%=[lang::message::lookup "" intranet-customer-portal.ThanksForOrder "Thanks for your order."]%>',
                                         closable:true
 				});
 				rfqCustomerPortalStore.load();
@@ -112,7 +110,7 @@ RFQPortlet.app = function() {
                                 clickHandlerCustomerDecisionQuote(rec.get('inquiry_id'), rec.get('project_id'),'reject');
 		                Ext.Msg.show({
 					title:'', 
-					msg: 'We are sorry to be unable to meet your expectations',
+					msg: '<%=[lang::message::lookup "" intranet-customer-portal.WeAreSorry "We are sorry to be unable to meet your expectations"]%>',
 					closable:true
 				});
 				rfqCustomerPortalStore.load();
@@ -137,7 +135,7 @@ RFQPortlet.app = function() {
 			params: sParams,
 			success: function(o) {
 				if (o.responseText == 0) {
-					field.markInvalid('Email already in use, please login');
+					field.markInvalid('<%=[lang::message::lookup "" intranet-customer-portal.EmailAlreadyInUse "Email already in use, please login"]%>');
 				}
 			}
 		});
