@@ -27,7 +27,10 @@ ad_page_contract {
 
 set user_id [ad_maybe_redirect_for_registration]
 set row_count 0
-set cost_type_id_invoice [db_string get_data "select category_id from im_categories where category_type = 'Customer Invoice'" -default 3700] 
+
+set cost_type_id_invoice [im_cost_type_invoice]
+set cost_type_id_quote [im_cost_type_quote]
+
 set docs_count 0
 
 # ---------------------------------------------------------------
@@ -86,7 +89,7 @@ if { !$user_is_primary_contact_or_accounting_contact } {
 	        and i.customer_id=c.company_id
 	        and i.provider_id=p.company_id
 		and c.company_id = $company_id
-		and i.cost_type_id = $cost_type_id_invoice
+		and i.cost_type_id in ($cost_type_id_invoice, $cost_type_id_quote)
 	order by 
 		i.invoice_id
 	limit   :limit
@@ -120,7 +123,7 @@ if { !$user_is_primary_contact_or_accounting_contact } {
 	        and i.customer_id=c.company_id
 	        and i.provider_id=p.company_id
 	        and c.company_id = $company_id
-                and i.cost_type_id = $cost_type_id_invoice
+		and i.cost_type_id in ($cost_type_id_invoice, $cost_type_id_quote)
 	"
 	if { 0 != $row_count} {
 		set docs_count [db_string get_count $sql -default 0]
