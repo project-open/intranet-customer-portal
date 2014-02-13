@@ -81,7 +81,7 @@ if { "submit"==$btn_value } {
 
 	if { 1 < [db_string i "select count(*) from im_inquiries_files where inquiry_id = :inquiry_id" -default 0] } {
 		# Create parent project 
-		set parent_id [project::new \
+		set parent_id [im_project::new \
 			-project_name       $project_name \
 			-project_nr         $project_nr \
 			-project_path       $project_path \
@@ -114,7 +114,7 @@ if { "submit"==$btn_value } {
 		        set project_id ""
 		        catch {
 			    if { [info exists parent_id] } {
-				set project_id [project::new \
+				set project_id [im_project::new \
 						    -project_name       $project_name \
 						    -project_nr         $project_nr \
 						    -project_path       $project_path \
@@ -124,7 +124,7 @@ if { "submit"==$btn_value } {
 						    -project_status_id  $project_status_id \
 					       ]
 			    } else {
-                                set project_id [project::new \
+                                set project_id [im_project::new \
                                                     -project_name       $project_name \
                                                     -project_nr         $project_nr \
                                                     -project_path       $project_path \
