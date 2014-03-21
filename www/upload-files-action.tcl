@@ -63,9 +63,8 @@ if { "submit"==$btn_value } {
 
 	set company_id [db_string get_company_id "select company_id from im_inquiries_customer_portal where inquiry_id=:inquiry_id" -default 0]
 
-	# project_type -> always 'Translation Project'
-	set project_type_id 2500
-	set project_status_id 71
+	set project_type_id 2500; # Translation Project
+	set project_status_id 72; # Inquiring 
 
 	# Set Source Path 
 	set temp_path [parameter::get -package_id [apm_package_id_from_key intranet-customer-portal] -parameter "TempPath" -default "/tmp"]
