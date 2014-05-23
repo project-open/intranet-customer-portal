@@ -10,7 +10,7 @@
     <inherit-templates-p>f</inherit-templates-p>
     <auto-mount>intranet-customer-portal</auto-mount>
 
-    <version name="4.0.5.0.0" url="http://www.project-open.org/download/apm/intranet-customer-portal-4.0.5.0.0.apm">
+    <version name="4.1.0.0.0" url="http://www.project-open.org/download/apm/intranet-customer-portal-4.1.0.0.0.apm">
         <owner url="mailto:klaus.hofeditz@project-open.com">Klaus Hofeditz</owner>
         <summary>Provides a customer portal for translation agencies</summary>
         <vendor url="www.project-open.org">]project-open[</vendor>
