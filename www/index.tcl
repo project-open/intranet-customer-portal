@@ -32,7 +32,7 @@ set show_left_navbar_p 0
 im_sencha_extjs_load_libraries
 
 # CSS Adjustemnts to ExtJS 
-template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 10
+# template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 10
 
 # ---------------------------------------------------------------
 # Set OpenACS login form
