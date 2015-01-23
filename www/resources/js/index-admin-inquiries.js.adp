@@ -6,9 +6,6 @@ Ext.Loader.setConfig({
 
 var todays_date = Date();
 
-// set local blank image 
-Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
-
 Ext.require([
     'Ext.form.field.File',
     'Ext.form.Panel',
@@ -23,6 +20,9 @@ Ext.require([
 
 
 Ext.onReady(function(){
+	
+	// set local blank image 
+ 	Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
 
        Ext.define('CustomerPortal.Category', {
             extend: 'Ext.data.Model',

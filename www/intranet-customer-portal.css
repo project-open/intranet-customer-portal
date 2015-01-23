@@ -1,4 +1,5 @@
 
+/*
 .x-panel-body-default {
     background: none repeat scroll 0 0 white;
     border-color: #FFFFFF;
@@ -14,6 +15,7 @@
     overflow: hidden;
     position: relative;
 }
+*/
 
 .action-column-icon-hide {
 	visibility: hidden; 
@@ -35,10 +37,6 @@
 }
 
 /* BUTTONS */
-
-
-
-
 
 
 
@@ -108,6 +106,3 @@
     white-space: nowrap;
     color: #333333;
 }
-
-
-

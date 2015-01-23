@@ -46,3 +46,16 @@
 .x-boxselect-item-close {
 	cursor: pointer;
 }
+
+.x-boxselect-item-close {
+    width       : 11px;
+    height      : 11px;
+    background-image: url(http://cdn.sencha.io/ext-4.2.0-gpl/resources/ext-theme-classic/images/tab/tab-default-close.gif);
+    filter      : progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    opacity     : 0.6;
+    top     : 2px;
+    right       : 2px;
+}
+.x-boxselect-list {
+    margin:0px;
+}

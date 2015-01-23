@@ -4,9 +4,6 @@ Ext.Loader.setConfig({
     enabled: true
 });
 
-// set local blank image 
-Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
-
 Ext.require([
     'Ext.form.field.File',
     'Ext.form.Panel',
@@ -24,6 +21,9 @@ Ext.require([
 Ext.namespace('FinancialDocumentsPortlet');
 
 FinancialDocumentsPortlet.app = function() {
+
+   // set local blank image 
+   Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
 
     return {
     // public properties, e.g. strings to translate
