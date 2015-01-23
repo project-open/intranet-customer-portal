@@ -117,11 +117,11 @@ if {[im_openacs54_p]} {
     im_sencha_extjs_load_libraries
 
     # CSS Adjustemnts to ExtJS
-    # template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 10
+    template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 10
 
     # Load SuperSelectBox
-    template::head::add_css -href "/intranet-customer-portal/resources/css/BoxSelect.css" -media "screen" -order 2
-    template::head::add_javascript -src "/intranet-customer-portal/resources/js/BoxSelect.js" -order 100
+    template::head::add_css -href "/intranet-customer-portal/resources/css/BoxSelect.css" -media "screen" -order 99999
+    template::head::add_javascript -src "/intranet-customer-portal/resources/js/BoxSelect.js" -order 9999999999
 }
 
 # ---------------------------------------------------------------
@@ -151,7 +151,7 @@ if { "" == $reset_p } { set reset_p 0 }
 if { "" == $cancel_p } { set cancel_p 0 }
 
 if {[im_openacs54_p]} {
-    template::head::add_javascript -src "/intranet-customer-portal/resources/js/upload-files-form.js?inquiry_id=$inquiry_id&security_token=$security_token" -order 2
+    template::head::add_javascript -src "/intranet-customer-portal/resources/js/upload-files-form.js?inquiry_id=$inquiry_id&security_token=$security_token" -order 9999999
     set js_include ""
 } else {
     

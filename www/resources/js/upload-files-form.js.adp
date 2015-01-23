@@ -1,8 +1,6 @@
 // General Settings
 var todays_date = Date();
 
-// set local blank image 
-Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
 
 // SuperSelectBox Target Language
 var tempIdCounter = 0;
@@ -17,6 +15,9 @@ Ext.require([
 
 
 Ext.onReady(function(){
+
+	// set local blank image 
+	Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
 
 	Ext.ux.form.FileUploadField.override({
 	    onChange : function() {
@@ -176,12 +177,12 @@ Ext.onReady(function(){
 
     });
 
-
         targetLanguageForm = new Ext.FormPanel({
             id:                 'targetLanguageForm_id',
             renderTo:           'form_target_languages',
             autoHeight:         true,
             height:             170,
+	    border:false,
             style: { "margin-right": "10px" },
             items: [
 		selectTargetLanguage
@@ -195,13 +196,15 @@ Ext.onReady(function(){
 	myuploadform = new Ext.FormPanel({
 	        id: 'upload_file_form',
 		renderTo: 'upload_file_placeholder',
+		border:false,
                 fileUpload: true,
                 width: 240,
                 autoHeight: true,
                 defaults: {
                     anchor: '95%',
                     allowBlank: false,
-                    msgTarget: 'side'
+                    msgTarget: 'side',
+		    border:0
                 },
                 items:[
                  {
@@ -320,6 +323,7 @@ Ext.onReady(function(){
             renderTo: 'source_language_placeholder',
             autoHeight: true,
             width: 150,
+	    border:false,
             style: { "margin-right": "10px" },
             items: [{
                 xtype: 'combo',

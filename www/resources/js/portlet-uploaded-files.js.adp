@@ -1,9 +1,6 @@
 
 // General Settings
 
-// set local blank image 
-Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
-
 Ext.require([
     'Ext.form.field.File',
     'Ext.form.Panel',
@@ -12,6 +9,9 @@ Ext.require([
 
 
 Ext.onReady(function(){
+
+	// set local blank image 
+	Ext.BLANK_IMAGE_URL = '/intranet/images/cleardot.gif';
 
 	function renderLink(val, meta, rec) {
 		var file_id = rec.get('inquiry_files_id');

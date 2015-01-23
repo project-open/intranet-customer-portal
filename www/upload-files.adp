@@ -32,7 +32,7 @@
 	<td> 
 		<!-- Upload Form -->
 		<div id="upload-form">
-			<table border="0">
+			<table border="0" width="800px">
 			<tr>
 				<td valign="top"><div id="upload_file_placeholder"></div> </td>
 				<td valign="top"><div id='delivery_date_placeholder'></div> </td>
