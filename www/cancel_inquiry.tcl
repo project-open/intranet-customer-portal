@@ -42,11 +42,8 @@ if { "" != $security_token } {
     set master_file "../../intranet-core/www/master"
 }
 
-# Load Sencha libs 
-if {[im_openacs54_p]} {
-    template::head::add_css -href "/intranet-sencha/resources/css/ext-all.css" -media "screen" -order "1"
-    template::head::add_javascript -src "/intranet-sencha/ext-all.js" -order "1"
-}
+# Loading ExtJS libs
+im_sencha_extjs_load_libraries
 
 # ---------------------------------------------------------------
 # Set HTML elements

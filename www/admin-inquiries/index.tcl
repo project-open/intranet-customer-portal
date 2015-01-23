@@ -32,7 +32,7 @@ if {![im_permission $current_user_id "view_projects_all"]} {
 set page_title ""
 
 # Load Sencha libs
-template::head::add_css -href "/intranet-sencha/resources/css/ext-all.css" -media "screen" -order "1"
+im_sencha_extjs_load_libraries
 
 # Load SuperSelectBox
 template::head::add_javascript -src "/intranet-sencha/ext-all.js" -order 1
