@@ -30,6 +30,7 @@ set row_count 0
 
 set cost_type_id_invoice [im_cost_type_invoice]
 set cost_type_id_quote [im_cost_type_quote]
+set cost_type_id_po [im_cost_type_po]
 
 set docs_count 0
 
@@ -40,12 +41,15 @@ set docs_count 0
 # we assume that user is member of only one company 
 set sql "
 	select
-		a.object_id_one as company_id
+		a.object_id_one as company_id,
+		c.company_type_id as company_type_id
 	from
-		acs_rels a
+		acs_rels a, 
+		im_companies c
 	where
 		object_id_two = $user_id and
-		rel_type = 'im_company_employee_rel'
+		rel_type = 'im_company_employee_rel' and 
+		c.company_id = a.object_id_one
 	limit 1
 "
 
@@ -55,6 +59,18 @@ if { [catch {
     ns_return 200 text/html "\{\"totalCount\":\"0\", \"docs\":\[ \]\}"
     ad_script_abort
 }
+
+
+if { $company_type_id == [im_company_type_freelance] } {
+    set where_purchase_orders "ci.provider_id = $company_id"
+    set cost_type_ids "$cost_type_id_po"
+    set where_quotes_invoices "1=1"
+} else {
+    set where_purchase_orders "1=1"
+    set cost_type_ids "$cost_type_id_invoice, $cost_type_id_quote"
+    set where_quotes_invoices "i.customer_id=c.company_id"
+}
+
 
 # security: user must be either "Key Account" or "Accounting Contact" ToDo: ... or listed in package parameter
 set user_is_primary_contact_or_accounting_contact [db_string get_view_id "select count(*) from im_companies where (primary_contact_id = :user_id or accounting_contact_id = :user_id) and company_id = $company_id" -default 0]
@@ -86,15 +102,17 @@ if { !$user_is_primary_contact_or_accounting_contact } {
 	where
 	        i.invoice_id = o.object_id
 	        and i.invoice_id = ci.cost_id
-	        and i.customer_id=c.company_id
+		and $where_quotes_invoices 
 	        and i.provider_id=p.company_id
 		and c.company_id = $company_id
-		and i.cost_type_id in ($cost_type_id_invoice, $cost_type_id_quote)
+		and i.cost_type_id in ($cost_type_ids)
+		and $where_purchase_orders
 	order by 
 		i.invoice_id
 	limit   :limit
 	offset  :start 
 	"
+
 	db_multirow -extend { invoice_status } docs doc_query $doc_query {
 	    	set invoice_status [im_category_from_id $status_id]
 	
@@ -120,10 +138,11 @@ if { !$user_is_primary_contact_or_accounting_contact } {
 	where
 	        i.invoice_id = o.object_id
 	        and i.invoice_id = ci.cost_id
-	        and i.customer_id=c.company_id
+	        and $where_quotes_invoices
 	        and i.provider_id=p.company_id
 	        and c.company_id = $company_id
-		and i.cost_type_id in ($cost_type_id_invoice, $cost_type_id_quote)
+		and i.cost_type_id in ($cost_type_ids)
+		and $where_purchase_orders
 	"
 	if { 0 != $row_count} {
 		set docs_count [db_string get_count $sql -default 0]
