@@ -130,7 +130,7 @@ if {[im_openacs54_p]} {
 
 #Source Language 
 set source_language_id 0
-set include_source_language_country_locale [ad_parameter -package_id [im_package_translation_id] SourceLanguageWithCountryLocaleP "" 0]
+set include_source_language_country_locale [im_parameter -package_id [im_package_translation_id] SourceLanguageWithCountryLocaleP "" 0]
 
 set source_language_combo [im_trans_language_select_cp -include_country_locale $include_source_language_country_locale source_language_id $source_language_id ]
 # set source_language_combo [im_trans_language_select -include_country_locale $include_source_language_country_locale]

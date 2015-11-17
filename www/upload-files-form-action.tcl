@@ -42,7 +42,7 @@ set context_bar ""
 # Get the file
 # -------------------------------------------------------------------
 
-set max_n_bytes [ad_parameter -package_id [im_package_filestorage_id] MaxNumberOfBytes "" 0]
+set max_n_bytes [im_parameter -package_id [im_package_filestorage_id] MaxNumberOfBytes "" 0]
 set tmp_filename [ns_queryget upload_file.tmpfile]
 im_security_alert_check_tmpnam -location "upload-files-form-action.tcl" -value $tmp_filename
 set filesize [file size $tmp_filename]
