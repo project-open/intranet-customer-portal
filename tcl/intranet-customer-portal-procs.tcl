@@ -26,7 +26,7 @@ ad_proc -public im_list_rfqs_component {} {
     
 } {
 
-    set user_id [ad_get_user_id]
+    set user_id [ad_conn user_id]
     set html_output "<div id='gridRFQ'></div><br>"
 
     if { [im_profile::member_p -profile_id [im_customer_group_id] -user_id $user_id] } {
@@ -59,7 +59,7 @@ ad_proc -public im_list_financial_documents_component {} {
 
 } {
 
-    set user_id [ad_get_user_id]
+    set user_id [ad_conn user_id]
     set html_output "<div id='gridFinancialDocuments'></div><br>"
 
     if {[im_openacs54_p]} {
