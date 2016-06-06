@@ -56,31 +56,31 @@ set enabled_tasks [db_list enabled_tasks "
 	and state = 'enabled'
     "]
 
-ns_log NOTICE "Number Tasks found: [db_string get_view_id "select count(*) from wf_tasks where case_id = :case_id and state = 'enabled'" -default 0]"
+ns_log Notice "Number Tasks found: [db_string get_view_id "select count(*) from wf_tasks where case_id = :case_id and state = 'enabled'" -default 0]"
 
 
 foreach task_id $enabled_tasks {
 
-    ns_log NOTICE "Loop entry for task_id: $task_id, case_id: $case_id"
+    ns_log Notice "Loop entry for task_id: $task_id, case_id: $case_id"
 
     # Assign the first task to the user himself and start the task
 
-    ns_log NOTICE "Now assigning task_id: $task_id to user: $user_id"
+    ns_log Notice "Now assigning task_id: $task_id to user: $user_id"
     set wf_case_assig [db_string wf_assig "select workflow_case__add_task_assignment (:task_id, :user_id, 'f')"]
 
     # Start the task. Saves the user the work to press the "Start Task" button.
-    ns_log NOTICE "Now set task action to 'start' for task_id: $task_id"
+    ns_log Notice "Now set task action to 'start' for task_id: $task_id"
     set journal_id [db_string wf_action "select workflow_case__begin_task_action (:task_id,'start','[ad_conn peeraddr]',:user_id,'')"]
 
-    ns_log NOTICE "Now starting task_id: $task_id"
+    ns_log Notice "Now starting task_id: $task_id"
     set journal_id2 [db_string wf_start "select workflow_case__start_task (:task_id,:user_id,:journal_id)"]
 
     # Set attribute name 
-    ns_log NOTICE "Now setting attribute value to: $attribute_value (journal_id: $journal_id, attribute: 'client_decision')"
+    ns_log Notice "Now setting attribute value to: $attribute_value (journal_id: $journal_id, attribute: 'client_decision')"
     set ttt [db_string wf_start "select workflow_case__set_attribute_value(:journal_id,'client_decision','$attribute_value')"]
 
     # Finish the task. That forwards the token to the next transition.
-    ns_log NOTICE "Now finishing taskd_id: $task_id, journal_id: $journal_id"
+    ns_log Notice "Now finishing taskd_id: $task_id, journal_id: $journal_id"
     set journal_id3 [db_string wf_finish "select workflow_case__finish_task(:task_id, :journal_id)"]
 }
 
@@ -92,27 +92,27 @@ set enabled_tasks [db_list enabled_tasks "
         and state = 'enabled'
     "]
 
-ns_log NOTICE "Number Tasks found: [db_string get_view_id "select count(*) from wf_tasks where case_id = :case_id and state = 'enabled'" -default 0]"
+ns_log Notice "Number Tasks found: [db_string get_view_id "select count(*) from wf_tasks where case_id = :case_id and state = 'enabled'" -default 0]"
 
 
 foreach task_id $enabled_tasks {
 
-    ns_log NOTICE "Loop entry for task_id: $task_id, case_id: $case_id"
+    ns_log Notice "Loop entry for task_id: $task_id, case_id: $case_id"
 
     # Assign the first task to the user himself and start the task
 
-    ns_log NOTICE "Now assigning task_id: $task_id to user: $user_id"
+    ns_log Notice "Now assigning task_id: $task_id to user: $user_id"
     set wf_case_assig [db_string wf_assig "select workflow_case__add_task_assignment (:task_id, :user_id, 'f')"]
 
     # Start the task. Saves the user the work to press the "Start Task" button.
-    ns_log NOTICE "Now set task action to 'start' for task_id: $task_id"
+    ns_log Notice "Now set task action to 'start' for task_id: $task_id"
     set journal_id [db_string wf_action "select workflow_case__begin_task_action (:task_id,'start','[ad_conn peeraddr]',:user_id,'')"]
 
-    ns_log NOTICE "Now starting task_id: $task_id"
+    ns_log Notice "Now starting task_id: $task_id"
     set journal_id2 [db_string wf_start "select workflow_case__start_task (:task_id,:user_id,:journal_id)"]
 
     # Finish the task. That forwards the token to the next transition.
-    ns_log NOTICE "Now finishing taskd_id: $task_id, journal_id: $journal_id"
+    ns_log Notice "Now finishing taskd_id: $task_id, journal_id: $journal_id"
     set journal_id3 [db_string wf_finish "select workflow_case__finish_task(:task_id, :journal_id)"]
 }
 

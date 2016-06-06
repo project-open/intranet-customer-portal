@@ -191,14 +191,14 @@ if { "submit"==$btn_value } {
 			set destination_path_project $destination_path 
 
 	                set target_languages_list [split $target_languages ',']
-			ns_log NOTICE "intranet-customer-portal::upload-files-action: found target languages: $target_languages_list"
+			ns_log Notice "intranet-customer-portal::upload-files-action: found target languages: $target_languages_list"
 
-			ns_log NOTICE "intranet-customer-portal::upload-files-action: create dir: $destination_path_project/$project_nr/$name_src_dir$source_language"
+			ns_log Notice "intranet-customer-portal::upload-files-action: create dir: $destination_path_project/$project_nr/$name_src_dir$source_language"
                         file mkdir "$destination_path_project/$project_nr/$name_src_dir$source_language"
 
         	        foreach i $target_languages_list {
 			        set lang_abbrev [im_category_from_id $i]
-			        ns_log NOTICE "intranet-customer-portal::upload-files-action: insert into im_target_languages: $lang_abbrev"
+			        ns_log Notice "intranet-customer-portal::upload-files-action: insert into im_target_languages: $lang_abbrev"
 			        db_dml insert_im_target_language "insert into im_target_languages values ($project_id, $i)"
 
 			        # Add required skills for Freelancer
@@ -252,10 +252,10 @@ if { "submit"==$btn_value } {
 	    # }
 
 	    if { [catch {
-		ns_log NOTICE "intranet-customer-portal::upload-files-action: Copy file to Source Folder: $temp_path/$security_token/$file_name --> $destination_path_project/$project_nr/0_source_$source_language/$file_name" 
+		ns_log Notice "intranet-customer-portal::upload-files-action: Copy file to Source Folder: $temp_path/$security_token/$file_name --> $destination_path_project/$project_nr/0_source_$source_language/$file_name" 
 		ns_cp "$temp_path/$security_token/$file_name" "$destination_path_project/$project_nr/$name_src_dir$source_language/$file_name" 
 	    } err_msg] } {
-		ns_log NOTICE "Error copying file: $err_msg" 
+		ns_log Notice "Error copying file: $err_msg" 
 		ad_return_complaint 1 $err_msg
 	    }
 
