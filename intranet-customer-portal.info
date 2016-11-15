@@ -14,6 +14,7 @@
         <owner url="mailto:klaus.hofeditz@project-open.com">Klaus Hofeditz</owner>
         <summary>Provides a customer portal for translation agencies</summary>
         <vendor url="www.project-open.com">]project-open[</vendor>
+        <release-date>2016-11-15</release-date>
         <description format="text/html">Customers can see their current projects, inquire and confirm quotes, upload files etc.</description>
         <maturity>0</maturity>
         <provides url="intranet-customer-portal" version="0.3d"/>
