@@ -19,7 +19,6 @@
 # @author klaus.hofeditz@project-open.com
 
 
-
 ad_proc -public im_list_rfqs_component {} {
     Returns a component that list all current RFQ together with their status
     and action options, such as "Accept/Deny Quote". 
@@ -35,23 +34,19 @@ ad_proc -public im_list_rfqs_component {} {
 		[lang::message::lookup "" intranet-customer-portal.GetANewQuote "Get a new quote"]</button>
 	"
     }
-    if {[im_openacs54_p]} {
-        # Include sencha libs
-	im_sencha_extjs_load_libraries
 
-        # CSS Adjustemnts to ExtJS
-        # template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 10
-
-        # Include Component JS
-        template::head::add_javascript -src "/intranet-customer-portal/resources/js/rfq-list.js" -order 200
-    } else {
-		append html_output "<script language='javascript'>"
-		append html_output [ad_parse_template "/packages/intranet-customer-portal/www/resources/js/rfq-list.js"]
-		append html_output "</script>"
-    }
+    # Include sencha libs
+    im_sencha_extjs_load_libraries
+    
+    # CSS Adjustments to ExtJS
+    # template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 10
+    
+    # Include Component JS
+    template::head::add_javascript -src "/intranet-customer-portal/resources/js/rfq-list.js" -order 200
 
     return $html_output
 }
+
 
 ad_proc -public im_list_financial_documents_component {} {
     Returns a component that list all current RFQ together with their status
@@ -62,19 +57,12 @@ ad_proc -public im_list_financial_documents_component {} {
     set user_id [ad_conn user_id]
     set html_output "<div id='gridFinancialDocuments'></div><br>"
 
-    if {[im_openacs54_p]} {
-	# Include sencha libs
-	template::head::add_css -href "/intranet-sencha/resources/css/ext-all.css" -media "screen" -order 1
-	template::head::add_javascript -src "/intranet-sencha/ext-all.js" -order 1
-	# CSS Adjustemnts to ExtJS
-	template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 10
-	# Include Component JS
-	template::head::add_javascript -src "/intranet-customer-portal/resources/js/financial-documents-list.js" -order 200
-    } else {
-	append html_output "<script language='javascript'>"
-	append html_output [ad_parse_template "/packages/intranet-customer-portal/www/resources/js/financial-documents-list.js"]
-	append html_output "</script>"
-    }
+    # Include sencha libs
+    im_sencha_extjs_load_libraries
+    # CSS Adjustemnts to ExtJS
+    template::head::add_css -href "/intranet-customer-portal/intranet-customer-portal.css" -media "screen" -order 999999
+    # Include Component JS
+    template::head::add_javascript -src "/intranet-customer-portal/resources/js/financial-documents-list.js" -order 99999
 
     return $html_output
 }
