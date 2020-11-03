@@ -91,6 +91,6 @@
 <div id="slave_content"></div>
 
 
-<script type="text/javascript">
+<script type="text/javascript" <if @::__csp_nonce@ not nil>nonce="@::__csp_nonce;literal@"</if>>
 	<%=$js_include%>
 </script>
