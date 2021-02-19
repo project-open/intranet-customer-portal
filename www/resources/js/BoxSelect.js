@@ -16,12 +16,12 @@
  * which in turn was inspired by the BoxSelect component for ExtJS 2 (http://efattal.fr/en/extjs/extuxboxselect/).
  *
  * Various contributions and suggestions made by many members of the ExtJS community which can be seen
- * in the user extension posting: http://www.sencha.com/forum/showthread.php?134751-Ext.ux.form.field.BoxSelect
+ * in the user extension posting: https://www.sencha.com/forum/showthread.php?134751-Ext.ux.form.field.BoxSelect
  *
  * Many thanks go out to all of those who have contributed, this extension would not be
  * possible without your help.
  *
- * @author kvee_iv http://www.sencha.com/forum/member.php?29437-kveeiv
+ * @author kvee_iv https://www.sencha.com/forum/member.php?29437-kveeiv
  * @version 1.3.1
  * @requires BoxSelect.css
  * @xtype boxselect
